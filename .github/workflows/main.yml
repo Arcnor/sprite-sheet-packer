@@ -66,7 +66,7 @@ jobs:
         mv linuxdeployqt-continuous-x86_64.AppImage $GITHUB_WORKSPACE/bin/linuxdeployqt
         chmod +x $GITHUB_WORKSPACE/bin/linuxdeployqt
         echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
-        sudo apt-get install -y libxcb-icccm4
+        sudo apt-get install -y libxcb-icccm4 libxcb-image0
 
     - name: Run QMake
       run: qmake sprite-sheet-packer.pro
