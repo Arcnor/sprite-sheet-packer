@@ -9,40 +9,40 @@ on:
       - '*'
 
 jobs:
-  macos:
-    runs-on: macos-10.15
-    steps:
-    - uses: actions/checkout@v2
+#   macos:
+#     runs-on: macos-10.15
+#     steps:
+#     - uses: actions/checkout@v2
 
-    - name: Change Xcode to 12.1.1
-      run: sudo xcode-select -s "/Applications/Xcode_12.1.1.app"
+#     - name: Change Xcode to 12.1.1
+#       run: sudo xcode-select -s "/Applications/Xcode_12.1.1.app"
 
-    - name: Cache Qt
-      id: cache-qt
-      uses: actions/cache@v1
-      with:
-        path: ../Qt
-        key: ${{ runner.os }}-QtCache
+#     - name: Cache Qt
+#       id: cache-qt
+#       uses: actions/cache@v1
+#       with:
+#         path: ../Qt
+#         key: ${{ runner.os }}-QtCache
 
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v2
-      with:
-        cached: ${{ steps.cache-qt.outputs.cache-hit }}
+#     - name: Install Qt
+#       uses: jurplel/install-qt-action@v2
+#       with:
+#         cached: ${{ steps.cache-qt.outputs.cache-hit }}
 
-    - name: Run QMake
-      run: qmake sprite-sheet-packer.pro
+#     - name: Run QMake
+#       run: qmake sprite-sheet-packer.pro
 
-    - name: Build
-      run: |
-        make -j8
+#     - name: Build
+#       run: |
+#         make -j8
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: SpriteSheetPacker-macos
-        path: |
-          ./*.dmg
-          ./**/*.dmg
+#     - name: Upload artifacts
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: SpriteSheetPacker-macos
+#         path: |
+#           ./*.dmg
+#           ./**/*.dmg
 
   linux:
     runs-on: ubuntu-16.04
