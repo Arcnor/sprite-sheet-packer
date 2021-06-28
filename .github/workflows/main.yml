@@ -93,3 +93,4 @@ jobs:
         path: |
           ./*.AppImage
           ./**/*.AppImage
+
